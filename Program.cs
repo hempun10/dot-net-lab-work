@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StudentContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("NeonConnection")));
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IHotelRepository,HotelRepository>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -26,3 +27,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

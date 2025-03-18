@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using myapp.models;
 using System.Reflection;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
+
 
 namespace myapp.Data
 {
@@ -12,10 +12,10 @@ namespace myapp.Data
         { }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure the Product entity
             modelBuilder.Entity<Student>(entity =>
             {
                 // Create a unique index on SKU
@@ -24,6 +24,17 @@ namespace myapp.Data
 
                 // Configure the Name property
                 entity.Property(p => p.Name)
+                      .IsRequired()
+                      .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Hotel>(entity =>
+            {
+                entity.HasIndex(p => p.Id).IsUnique();
+                entity.Property(p => p.Name)
+                      .IsRequired()
+                      .HasMaxLength(100);
+                entity.Property(p => p.Address)
                       .IsRequired()
                       .HasMaxLength(100);
             });

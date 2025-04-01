@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace myapp.models
 {
-    public class Student
+    public class Class
     {
         [Key]
         public int Id { get; set; }
@@ -11,11 +11,8 @@ namespace myapp.models
         public string Name { get; set; }
 
         [Required]
-        public string Gender { get; set; }
+        public string Address { get; set; }
 
-        [Required]
-        public int ClassId { get; set; }
-
-        public Class Class { get; set; }
+        public List<Student>? Students;
     }
 }

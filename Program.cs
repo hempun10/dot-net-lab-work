@@ -14,6 +14,7 @@ builder.Services.AddDbContext<StudentContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("NeonConnection")));
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IHotelRepository,HotelRepository>();
+builder.Services.AddScoped<IClassRepository,ClassRepository>();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

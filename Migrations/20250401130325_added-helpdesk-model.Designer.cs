@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using myapp.Data;
@@ -11,9 +12,11 @@ using myapp.Data;
 namespace myapp.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    partial class StudentContextModelSnapshot : ModelSnapshot
+    [Migration("20250401130325_added-helpdesk-model")]
+    partial class addedhelpdeskmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,7 +197,7 @@ namespace myapp.Migrations
                             TechnicianId = 1,
                             Email = "john.smith@helpdesk.com",
                             FirstName = "John",
-                            HireDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            HireDate = new DateTime(2022, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsAvailable = true,
                             LastName = "Smith",
                             PhoneNumber = "555-123-4567",
@@ -205,7 +208,7 @@ namespace myapp.Migrations
                             TechnicianId = 2,
                             Email = "emma.johnson@helpdesk.com",
                             FirstName = "Emma",
-                            HireDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            HireDate = new DateTime(2021, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsAvailable = true,
                             LastName = "Johnson",
                             PhoneNumber = "555-987-6543",
